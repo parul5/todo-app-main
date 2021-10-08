@@ -1,0 +1,118 @@
+:root {
+  --light-bg-image: url("./images/bg-desktop-light.jpg");
+  --bg-color: hsl(0, 0%, 98%);
+  --card-color: #fff;
+  --circle-border: hsl(236, 33%, 92%);
+  --card-border: hsl(233, 11%, 84%);
+  --shadow: hsl(0, 0%, 87%);
+  --text-color: hsl(235, 19%, 35%);
+}
+
+.dark-theme {
+  --light-bg-image: url("./images/bg-desktop-light.jpg");
+  --bg-color: hsl(235, 21%, 11%);
+  --card-color: hsl(235, 24%, 19%);
+  --card-border: hsl(233, 14%, 35%);
+  --text-color: hsl(234, 19%, 79%);
+  --shadow: hsl(0, 0%, 0%);
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+}
+
+header {
+  background-image: var(--light-bg-image);
+  height: 30vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  max-width: 500px;
+  margin: -20vh auto;
+  padding: 10px;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: #fff;
+  letter-spacing: 0.8rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-tasks {
+  border-radius: 5px;
+}
+
+input {
+  border: none;
+  width: 100%;
+  font-size: 1.2rem;
+  caret-color: var(--text-color);
+  background: transparent;
+  color: var(--text-color);
+}
+
+input:focus {
+  outline: none;
+}
+
+.circle {
+  height: 19px;
+  width: 19px;
+  border-radius: 50%;
+  margin-right: 2%;
+  border: 2px solid var(--circle-border);
+}
+
+.task-view {
+  margin: 20px auto;
+  border-radius: 1%;
+  overflow: hidden;
+  box-shadow: 0px 4vh 100px 1px var(--shadow);
+}
+
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  height: 3rem;
+  font-size: 1.2rem;
+  background: var(--card-color);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.task-card:hover button {
+  opacity: 1;
+}
+
+.task-desc {
+  box-sizing: border-box;
+  width: 90%;
+  padding-top: 7px;
+  margin: 3px;
+}
+
+button {
+  opacity: 0;
+  background: none;
+  border: none;
+}
+
+.footer {
+  font-size: 0.9rem;
+  height: 1.8rem;
+}
