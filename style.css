@@ -1,5 +1,5 @@
 :root {
-  --light-bg-image: url("./images/bg-desktop-light.jpg");
+  --bg-image: url("./images/bg-desktop-light.jpg");
   --bg-color: hsl(0, 0%, 98%);
   --card-color: #fff;
   --circle-border: hsl(236, 33%, 92%);
@@ -9,7 +9,7 @@
 }
 
 .dark-theme {
-  --light-bg-image: url("./images/bg-desktop-light.jpg");
+  --bg-image: url("./images/bg-desktop-dark.jpg");
   --bg-color: hsl(235, 21%, 11%);
   --card-color: hsl(235, 24%, 19%);
   --card-border: hsl(233, 14%, 35%);
@@ -27,7 +27,7 @@ body {
 }
 
 header {
-  background-image: var(--light-bg-image);
+  background-image: var(--bg-image);
   height: 30vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -52,6 +52,11 @@ h1 {
   justify-content: space-between;
 }
 
+#theme-toggle:hover svg {
+  filter: drop-shadow(0 0 0.5rem #fff);
+  cursor: pointer;
+}
+
 .add-tasks {
   border-radius: 5px;
 }
@@ -70,11 +75,28 @@ input:focus {
 }
 
 .circle {
-  height: 19px;
-  width: 19px;
+  min-height: 19px;
+  min-width: 19px;
   border-radius: 50%;
   margin-right: 2%;
-  border: 2px solid var(--circle-border);
+  background: var(--circle-border);
+  display: grid;
+  place-items: center;
+}
+
+.circle:hover {
+  background-image: linear-gradient(
+    120deg,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+}
+
+.inner-circle {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background-color: var(--card-color);
 }
 
 .task-view {
@@ -89,7 +111,8 @@ input:focus {
   justify-content: space-between;
   align-items: center;
   padding: 5px;
-  height: 3rem;
+  height: fit-content;
+  min-height: 3rem;
   font-size: 1.2rem;
   background: var(--card-color);
   border-bottom: 1px solid var(--card-border);
@@ -110,9 +133,56 @@ button {
   opacity: 0;
   background: none;
   border: none;
+  cursor: pointer;
+}
+
+.draggable {
+  cursor: move;
+}
+
+.dragging {
+  opacity: 0.8;
+  transform: scale(0.9);
+  transition: all 0.2s ease-out;
 }
 
 .footer {
   font-size: 0.9rem;
   height: 1.8rem;
+}
+
+.check {
+  cursor: pointer;
+}
+
+.checked {
+  background-image: linear-gradient(
+    120deg,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+}
+
+.highlight {
+  color: hsl(220, 98%, 61%);
+}
+
+.bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2rem;
+  font-size: 0.9rem;
+  padding: 10px;
+}
+
+.bottom-bar span {
+  box-sizing: border-box;
+  margin: 0px 3px;
+  cursor: pointer;
+  padding: 3px;
+}
+
+.bottom-bar span:hover {
+  text-shadow: 0 0 0.03px;
 }
