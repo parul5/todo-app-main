@@ -63,6 +63,7 @@ function bottombar() {
         html += `<span onclick="clearAllCompleted()">Clear All completed</span></div>`;
         document.getElementById('task-view').innerHTML += html;
     } else {
+        document.getElementById('mobile-filters').style.display = 'flex';
         html += `<span onclick="clearAllCompleted()">Clear All completed</span></div></div>`;
         document.getElementById('task-view').innerHTML += html;
         document.getElementById('mobile-filters').innerHTML = filters;

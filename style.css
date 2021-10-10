@@ -200,8 +200,7 @@ button {
   width: 100%;
   padding: 2px;
 }
-@media screen and (min-width: 768px) {
-  #mobile-filters {
-    display: none;
-  }
+
+#mobile-filters {
+  display: none;
 }
