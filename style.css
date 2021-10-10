@@ -163,6 +163,13 @@ button {
   );
 }
 
+#mobile-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
 .highlight {
   color: hsl(220, 98%, 61%);
 }
@@ -185,4 +192,16 @@ button {
 
 .bottom-bar span:hover {
   text-shadow: 0 0 0.03px;
+}
+
+#mobile-filters > #filters {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2px;
+}
+@media screen and (min-width: 768px) {
+  #mobile-filters {
+    display: none;
+  }
 }

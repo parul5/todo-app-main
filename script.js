@@ -45,20 +45,28 @@ let activeFilter = 0;
 
 // function to generate bottom bar
 function bottombar() {
-    let html = '';
+    let html = '', filters = '';
     html += `<div class="bottom-bar"><div>${count} tasks left</div>`;
     if (activeFilter == 0) {
         // show bottom bar with 'All' highlighted
-        html += `<div><span class="highlight" onclick="setFilter(0)" >All</span><span onclick="setFilter(1)" >Active</span><span onclick="setFilter(2)">Completed</span></div>`;
+        filters += `<div id="filters" ><span class="highlight" onclick="setFilter(0)" >All</span><span onclick="setFilter(1)" >Active</span><span onclick="setFilter(2)">Completed</span></div>`;
     } else if (activeFilter == 1) {
         //show bottom bar with active highlighted
-        html += `<div><span onclick="setFilter(0)" >All</span><span class="highlight" onclick="setFilter(1)">Active</span><span onclick="setFilter(2)">Completed</span></div>`;
+        filters += `<div id="filters" ><span onclick="setFilter(0)" >All</span><span class="highlight" onclick="setFilter(1)">Active</span><span onclick="setFilter(2)">Completed</span></div>`;
     } else {
         // show completed highlighted
-        html += `<div><span onclick="setFilter(0)" >All</span><span onclick="setFilter(1)">Active</span><span class="highlight" onclick="setFilter(2)">Completed</span></div>`;
+        filters += `<div id="filters" ><span onclick="setFilter(0)" >All</span><span onclick="setFilter(1)">Active</span><span class="highlight" onclick="setFilter(2)">Completed</span></div>`;
     }
-    html += `<span onclick="clearAllCompleted()">Clear All completed</span></div>`;
-    document.getElementById('task-view').innerHTML += html;
+    
+    if (screen.width > 780) {
+        html += filters;
+        html += `<span onclick="clearAllCompleted()">Clear All completed</span></div>`;
+        document.getElementById('task-view').innerHTML += html;
+    } else {
+        html += `<span onclick="clearAllCompleted()">Clear All completed</span></div></div>`;
+        document.getElementById('task-view').innerHTML += html;
+        document.getElementById('mobile-filters').innerHTML = filters;
+    }   
 }
 
 // this function changes value of activeFilter. It is called by elements in bottom bar
