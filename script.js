@@ -1,5 +1,6 @@
 'use strict';
 
+// function for dark theme 😍
 document.getElementById('theme-toggle').addEventListener('click', function () {
     document.body.classList.toggle('dark-theme');
     if (document.body.classList.contains('dark-theme')) {
@@ -9,10 +10,12 @@ document.getElementById('theme-toggle').addEventListener('click', function () {
     }
 });
 
+// function to generate unique ID for each task 
 let uniqueId = function () {
     return Date.now();
 }
 
+// Array of objects to store information about task
 let tasks = [{
     description: 'Buy some coffee',
     isChecked: false,
@@ -25,6 +28,8 @@ let tasks = [{
 }
 ];
 
+
+// count variables has number of active tasks 
 let count = 0;
 function setCount() {
     count = 0;
@@ -35,8 +40,10 @@ function setCount() {
     }
 }
 
+// variable for filtering task view
 let activeFilter = 0;
 
+// function to generate bottom bar
 function bottombar() {
     let html = '';
     html += `<div class="bottom-bar"><div>${count} tasks left</div>`;
@@ -54,11 +61,14 @@ function bottombar() {
     document.getElementById('task-view').innerHTML += html;
 }
 
+// this function changes value of activeFilter. It is called by elements in bottom bar
 function setFilter(filter) {
     activeFilter = filter;
     listTasks();
 }
 
+
+//  function to clear all Completed tasks and remove from array
 function clearAllCompleted() {
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].isChecked) {
@@ -68,6 +78,7 @@ function clearAllCompleted() {
     listTasks();
 }
 
+// this functinon creates HTML code from tasks array and add it to the #task-view div/
 function listTasks() {
     let html = '';
     for (let i = 0; i < tasks.length; i++) {
@@ -106,6 +117,7 @@ function listTasks() {
     bottombar();
 }
 
+// function to delete a task from array and rerender all tasks.
 function deleteTask(id) {
     for (let i = 0; i < tasks.length; i++) {
         if (id == tasks[i].id) {
@@ -117,7 +129,7 @@ function deleteTask(id) {
     listTasks();
 }
 
-
+// Function to add task in array
 function createNewTask(e) {
     if (e.keyCode == 13) {
         e.preventDefault();
@@ -129,6 +141,7 @@ function createNewTask(e) {
     }
 }
 
+// function checks/completes a task. triggered by checkbox in each task.
 function check(cardId) {
     count = 0;
     for (let i = 0; i < tasks.length; i++) {
@@ -139,10 +152,10 @@ function check(cardId) {
     listTasks();
 }
 
-
+// this function call renders tasks initially which are there for demo purpose
 listTasks();
 
-document.getElementById('new-task').addEventListener("keyup", createNewTask);
+document.getElementById('new-task').addEventListener("keydown", createNewTask);
 
 // const draggables = document.querySelectorAll('.draggable');
 // const constainer = document.querySelector('task-view');
