@@ -81,7 +81,12 @@ function setFilter(filter) {
 function clearAllCompleted() {
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i].isChecked) {
-            tasks.splice(i, 1);
+            let c = 1, j = i+1;
+            while (j < tasks.length && tasks[j].isChecked) {
+                j++;
+                c++;
+            }
+            tasks.splice(i, c);
         }
     }
     listTasks();
