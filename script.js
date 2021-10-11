@@ -41,6 +41,9 @@ function setCount() {
 }
 
 // variable for filtering task view
+// 0 = all 
+// 1 = active
+// 3 = completed
 let activeFilter = 0;
 
 // function to generate bottom bar
@@ -96,7 +99,9 @@ function clearAllCompleted() {
 function listTasks() {
     let html = '';
     for (let i = 0; i < tasks.length; i++) {
+        // there are 2 possible states for tasks : checked or unchecked. According to that html code changes
         if (tasks[i].isChecked) {
+            // if active filter is there don't show checked tasks
             if (activeFilter != 1) {
                 html += `<div class="task-card draggable" id="${tasks[i].id}" draggable="true">
                     <div class="circle check checked" onclick="check(${tasks[i].id})"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg></div>
@@ -111,6 +116,7 @@ function listTasks() {
                 </div>`;
             }
         } else {
+            // if completed filter is there, dont't show active tasks 
             if (activeFilter != 2) {
                 html += `<div class="task-card draggable" id="${tasks[i].id}" draggable="true">
                     <div class="circle check" onclick="check(${tasks[i].id})"><div class="inner-circle"></div></div>
@@ -166,11 +172,12 @@ function check(cardId) {
     listTasks();
 }
 
-// this function call renders tasks initially which are there for demo purpose
+// this function-call renders tasks initially which are there for demo purpose
 listTasks();
 
 document.getElementById('new-task').addEventListener("keydown", createNewTask);
 
+// Work in progress 💀
 // const draggables = document.querySelectorAll('.draggable');
 // const constainer = document.querySelector('task-view');
 
