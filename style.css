@@ -8,6 +8,8 @@
   --text-color: hsl(235, 19%, 35%);
 }
 
+/* class for dark theme 
+will be applied to body*/
 .dark-theme {
   --bg-image: url("./images/bg-desktop-dark.jpg");
   --bg-color: hsl(235, 21%, 11%);
@@ -74,6 +76,7 @@ input:focus {
   outline: none;
 }
 
+/* checkbox for each task */
 .circle {
   min-height: 19px;
   min-width: 19px;
@@ -84,6 +87,7 @@ input:focus {
   place-items: center;
 }
 
+/* hover effect  */
 .circle:hover {
   background-image: linear-gradient(
     120deg,
@@ -92,6 +96,7 @@ input:focus {
   );
 }
 
+/* This will hide check icon inside checkbox. Used to show unchecked items */
 .inner-circle {
   width: 90%;
   height: 90%;
@@ -99,6 +104,7 @@ input:focus {
   background-color: var(--card-color);
 }
 
+/* List of tasks */
 .task-view {
   margin: 20px auto;
   border-radius: 1%;
@@ -106,6 +112,7 @@ input:focus {
   box-shadow: 0px 4vh 100px 1px var(--shadow);
 }
 
+/* formatting of each task */
 .task-card {
   display: flex;
   justify-content: space-between;
@@ -118,22 +125,25 @@ input:focus {
   border-bottom: 1px solid var(--card-border);
 }
 
-.task-card:hover button {
-  opacity: 1;
-}
-
-.task-desc {
-  box-sizing: border-box;
-  width: 90%;
-  padding-top: 7px;
-  margin: 3px;
-}
-
+/* delete button. Initially hidden */
 button {
   opacity: 0;
   background: none;
   border: none;
   cursor: pointer;
+}
+
+/* showing delete button on hovering task */
+.task-card:hover button {
+  opacity: 1;
+}
+
+/* Task description */
+.task-desc {
+  box-sizing: border-box;
+  width: 90%;
+  padding-top: 7px;
+  margin: 3px;
 }
 
 .draggable {
@@ -146,6 +156,7 @@ button {
   transition: all 0.2s ease-out;
 }
 
+/* footer providing funtions task count, filters and clear completed */
 .footer {
   font-size: 0.9rem;
   height: 1.8rem;
@@ -155,6 +166,7 @@ button {
   cursor: pointer;
 }
 
+/* when task is checked make it gradient bg with check icon */
 .checked {
   background-image: linear-gradient(
     120deg,
@@ -163,6 +175,7 @@ button {
   );
 }
 
+/* This is only for mobile and will be hidden on desktop */
 #mobile-filters {
   display: flex;
   align-items: center;
@@ -170,6 +183,7 @@ button {
   margin-top: 20px;
 }
 
+/* for highlighting active filters */
 .highlight {
   color: hsl(220, 98%, 61%);
 }
@@ -196,11 +210,13 @@ button {
 
 #mobile-filters > #filters {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
   padding: 2px;
 }
 
+/* I am putting filters in div with #mobile-filters id on mobile. 
+Otherwise, it will be a part of bottom bar at task-view bottom */
 #mobile-filters {
   display: none;
 }
